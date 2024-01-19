@@ -1,4 +1,10 @@
+// firebase
+import {signOut } from "firebase/auth";
+import { auth } from "../firebase";
+
+import { useAuth } from "../contexts/AuthContext";
 const Navbar = () => {
+  const user = useAuth()
   return (
     <div className="bg-main-dark flex  justify-between items-center h-12 px-2">
       <div className="">
@@ -10,13 +16,14 @@ const Navbar = () => {
       <div className=" md:w-full lg:w-auto flex items-center gap-2 justify-between  lg:justify-end">
         <div className="flex gap-2 items-center">
           <img
-            src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600"
+            src={user.photoURL}
             alt=""
             className="w-8 h-8 rounded-full object-cover"
           />
-          <span className="text-sm text-light-color font-medium">Jimy</span>
+          <span className="text-sm text-light-color font-medium">{user.displayName}</span>
         </div>
-        <button className="bg-main-very-light text-[12px] text-light-color font-medium py-[2px] px-1 rounded-sm">
+        <button  className="bg-main-very-light text-[12px] text-light-color font-medium py-[2px] px-1 rounded-sm"
+        onClick={()=>signOut(auth)}>
           logout
         </button>
       </div>
