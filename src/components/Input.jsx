@@ -89,7 +89,7 @@ const Input = () => {
     setImage(null);
   };
   return (
-    <div className=" flex items-center justify-between w-full h-[66px] bg-[#fff] px-2">
+    <div className=" flex items-center justify-between w-full h-10 bg-[#fff] px-2">
       <input
         type="text"
         placeholder="type anything ..."

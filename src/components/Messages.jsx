@@ -22,13 +22,10 @@ const Messages = () => {
   }, [data.chatId]);
 
   return (
-    <div className="w-full h-[19rem] p-4 bg-light-color overflow-scroll">
+    <div className="w-full h-[20rem] p-4 bg-light-color overflow-scroll ">
       {messages?.map((message) => {
         return <Message key={message.id} message={message} />;
       })}
-      {/* <Message />
-      <Message />
-      <Message /> */}
     </div>
   );
 };

@@ -6,13 +6,15 @@ import { Input, Messages } from "./index";
 import { useChat } from "../contexts/ChatContext";
 
 const Chat = () => {
-  const {data} = useChat()
+  const { data } = useChat();
 
   return (
-    <div className="border border-green-500 w-full">
+    <div className=" w-full">
       {/* chat info bar */}
-      <div className="bg-main-light p-2 flex justify-between items-center">
-        <span className="text-gray font-semibold">{data.user?.displayName}</span>
+      <div className="bg-main-light h-10 px-2 flex justify-between items-center">
+        <span className="text-gray font-semibold">
+          {data.user?.displayName}
+        </span>
         {/* icons */}
         <div className="flex justify-between items-center gap-3 text-gray">
           <BsCameraVideoFill className="hover:cursor-pointer  " />
