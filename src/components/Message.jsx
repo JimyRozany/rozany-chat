@@ -1,10 +1,30 @@
-const Message = () => {
+import { useEffect, useRef } from "react";
+import { useAuth } from "../contexts/AuthContext";
+import { useChat } from "../contexts/ChatContext";
+
+const Message = ({ message }) => {
+  const currentUser = useAuth();
+  const { data } = useChat();
+  const ref = useRef();
+
+  useEffect(() => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  }, [message]);
+
   return (
-    <div className="flex gap-2">
+    <div
+      ref={ref}
+      className="flex gap-2"
+      dir={message.senderId === currentUser.uid ? "rtl" : "ltr"}
+    >
       {/* message info */}
       <div className="">
         <img
-          src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=600"
+          src={
+            message.senderId === currentUser.uid
+              ? currentUser.photoURL
+              : data.user.photoURL
+          }
           alt=""
           className="w-8 h-8 object-cover rounded-full"
         />
@@ -13,11 +33,19 @@ const Message = () => {
       {/* ------- message info ------- */}
       {/* message content */}
       <div className="">
-        <p className="py-1 px-2 max-w-max rounded-se-md rounded-b-md text-[#fff] font-medium bg-sky-color">
-          hello
-        </p>
+        {message.text && (
+          <p
+            className={`${
+              message.senderId === currentUser.uid
+                ? "bg-sky-color text-[#fff]"
+                : "text-[#000] bg-[#fff]"
+            }  py-1 px-2 max-w-max rounded-se-md rounded-b-md  font-medium`}
+          >
+            {message.text}
+          </p>
+        )}
         <img
-          src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=600"
+          src={message.image}
           alt=""
           className="max-w-[80%] my-2 rounded-md object-cover"
         />

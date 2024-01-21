@@ -3,13 +3,16 @@ import { BsCameraVideoFill } from "react-icons/bs";
 
 import { IoIosMore } from "react-icons/io";
 import { Input, Messages } from "./index";
+import { useChat } from "../contexts/ChatContext";
 
 const Chat = () => {
+  const {data} = useChat()
+
   return (
     <div className="border border-green-500 w-full">
       {/* chat info bar */}
       <div className="bg-main-light p-2 flex justify-between items-center">
-        <span className="text-gray font-semibold">Ali</span>
+        <span className="text-gray font-semibold">{data.user?.displayName}</span>
         {/* icons */}
         <div className="flex justify-between items-center gap-3 text-gray">
           <BsCameraVideoFill className="hover:cursor-pointer  " />

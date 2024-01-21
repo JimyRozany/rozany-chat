@@ -70,6 +70,8 @@ const Register = () => {
               email: email,
               photoURL: downloadURL,
             });
+            // create user chats
+            setDoc(doc(db, "userChats", response.user.uid), {});
             // redirect to login page
             navigate("/login");
           });
@@ -133,7 +135,7 @@ const Register = () => {
       {/* go to login page  */}
       <div className="text-center">
         <span className="text-gray">i have an account! </span>
-        <Link to="login" className="text-main-dark font-medium">
+        <Link to="/login" className="text-main-dark font-medium">
           Login
         </Link>
       </div>

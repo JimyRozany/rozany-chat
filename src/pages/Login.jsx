@@ -56,7 +56,7 @@ const Login = () => {
       {/* go to login page  */}
       <div className="text-center">
         <span className="text-gray">you dont have an account? </span>
-        <Link to="register" className="font-medium text-main-dark">
+        <Link to="/register" className="font-medium text-main-dark">
           Register
         </Link>
       </div>
